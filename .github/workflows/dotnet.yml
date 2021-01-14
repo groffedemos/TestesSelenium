@@ -25,10 +25,8 @@ jobs:
       env:
         cache-name: cache-selenium-standalone-firefox
       with:
-        # npm cache files are stored in `~/.npm` on Linux/macOS
-        #path: ~/.npm
         path: ./selenium-standalone-firefox.tar
-        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/selenium-standalone-firefox.tar') }}
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('./selenium-standalone-firefox.tar') }}
         restore-keys: |
           ${{ runner.os }}-build-${{ env.cache-name }}-
           ${{ runner.os }}-build-
@@ -36,6 +34,7 @@ jobs:
           
     - name: Criar container Selenium
       run: |
+        ls
         docker load --input selenium-standalone-firefox.tar || true
         docker run --name selenium-standalone-firefox -d -p 4444:4444 --shm-size 2g selenium/standalone-firefox:4.0.0-beta-1-prerelease-20210106
         test ! -f selenium-standalone-firefox.tar && docker save --output selenium-standalone-firefox.tar selenium/standalone-firefox:4.0.0-beta-1-prerelease-20210106
