@@ -38,10 +38,10 @@ jobs:
       run: |
         ls
         docker load --input selenium-standalone.tar || true
-        docker run --name selenium-standalone -d -p 4444:4444 --shm-size 2g selenium/standalone-firefox:4.0.0-beta-1-prerelease-20210106
+        docker run --name selenium-standalone -d -p 4444:4444 --shm-size 2g selenium/standalone-firefox:4.0.0-beta-1-prerelease-20210114
         docker ps
         docker images
-        test ! -f selenium-standalone.tar && docker save --output selenium-standalone.tar selenium/standalone-firefox:4.0.0-beta-1-prerelease-20210106
+        test ! -f selenium-standalone.tar && docker save --output selenium-standalone.tar selenium/standalone-firefox:4.0.0-beta-1-prerelease-20210114
         ls 
 
     - name: Executar teste com Selenium
