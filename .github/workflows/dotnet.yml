@@ -10,6 +10,7 @@ jobs:
   build:
     env:
       SiteTestes: https://github.com
+      IMAGEM_SELENIUM: selenium/standalone-firefox:4.0.0-beta-1-prerelease-20210114
 
     runs-on: ubuntu-latest
 
@@ -26,7 +27,7 @@ jobs:
         cache-name: cache-selenium-standalone
       with:
         path: ./selenium-standalone.tar
-        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/selenium-standalone.tar') }}
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ env.IMAGEM_SELENIUM }}
         restore-keys: |
           ${{ runner.os }}-build-${{ env.cache-name }}-
           ${{ runner.os }}-build-
@@ -38,10 +39,10 @@ jobs:
       run: |
         ls
         docker load --input selenium-standalone.tar || true
-        docker run --name selenium-standalone -d -p 4444:4444 --shm-size 2g selenium/standalone-firefox:4.0.0-beta-1-prerelease-20210114
+        docker run --name selenium-standalone -d -p 4444:4444 --shm-size 2g ${{ env.IMAGEM_SELENIUM }}
         docker ps
         docker images
-        test ! -f selenium-standalone.tar && docker save --output selenium-standalone.tar selenium/standalone-firefox:4.0.0-beta-1-prerelease-20210114
+        test ! -f selenium-standalone.tar && docker save --output selenium-standalone.tar ${{ env.IMAGEM_SELENIUM }}
         ls 
 
     - name: Executar teste com Selenium
