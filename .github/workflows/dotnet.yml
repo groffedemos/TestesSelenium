@@ -26,7 +26,7 @@ jobs:
         cache-name: cache-selenium-standalone
       with:
         path: ./selenium-standalone.tar
-        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('./selenium-standalone.tar') }}
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/selenium-standalone.tar') }}
         restore-keys: |
           ${{ runner.os }}-build-${{ env.cache-name }}-
           ${{ runner.os }}-build-
