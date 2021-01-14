@@ -20,7 +20,7 @@ jobs:
       with:
         dotnet-version: 5.0.101
 
-    - name: Cache node modules
+    - name: Cache imagem Selenium
       uses: actions/cache@v2.1.3
       env:
         cache-name: cache-selenium-standalone
