@@ -16,7 +16,7 @@ namespace TesteSelenium
 
 
             var siteTestes = Environment.GetEnvironmentVariable("SiteTestes");
-            driver.Navigate().GoToUrl("http://www.google.com/");
+            driver.Navigate().GoToUrl(siteTestes);
 
             System.Threading.Thread.Sleep(3000);
 
