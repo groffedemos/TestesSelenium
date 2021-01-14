@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     env:
-      SiteTestes: https://github.com
+      SiteTestes: https://www.microsoft.com
       IMAGEM_SELENIUM: selenium/standalone-firefox:4.0.0-beta-1-prerelease-20210106
 
     runs-on: ubuntu-latest
