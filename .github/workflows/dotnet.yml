@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     env:
-      SiteTestes: https://docs.github.com/en/free-pro-team@latest/actions
+      SiteTestes: https://www.uol.com.br
 
     runs-on: ubuntu-latest
 
