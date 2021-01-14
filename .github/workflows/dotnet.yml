@@ -10,7 +10,7 @@ jobs:
   build:
     env:
       SiteTestes: https://github.com
-      IMAGEM_SELENIUM: selenium/standalone-firefox:4.0.0-beta-1-prerelease-20210114
+      IMAGEM_SELENIUM: selenium/standalone-chrome:4.0.0-beta-1-prerelease-20210114
 
     runs-on: ubuntu-latest
 
@@ -46,4 +46,4 @@ jobs:
     - name: Executar teste com Selenium
       run: |
         cd ./TesteSelenium
-        dotnet run "firefox"
+        dotnet run "chrome"
